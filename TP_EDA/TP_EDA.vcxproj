@@ -18,6 +18,15 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="cliente.h" />
+    <ClInclude Include="gestor.h" />
+    <ClInclude Include="menu.h" />
+    <ClInclude Include="mobilidade.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="menu.c" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
