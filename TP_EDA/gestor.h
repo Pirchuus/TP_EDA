@@ -10,6 +10,6 @@ typedef struct gestor
 } Gestor;
 
 void listarGestores(Gestor* gestor);
-Cliente* inserirGestor(Gestor* gestor, int id, char nome[], char password[]);
-Cliente* removerGestor(Gestor* gestor, int id);
-Cliente* atualizarGestor(Gestor* gestor, int id, char nome[], char password[]);
+Gestor* inserirGestor(Gestor* gestor, int id, char nome[], char password[]);
+Gestor* removerGestor(Gestor* gestor, int id);
+Gestor* atualizarGestor(Gestor* gestor, int id, char nome[], char password[]);

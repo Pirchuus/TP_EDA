@@ -11,6 +11,6 @@ typedef struct mobilidade
 } Mobilidade;
 
 void listarMobilidades(Mobilidade* mobilidade);
-Cliente* inserirMobilidade(Mobilidade* mobilidade, int id, char tipo[], float nivel_bateria, int alugada);
-Cliente* removerMobilidae(Mobilidade* mobilidade, int id);
-Cliente* atualizarMobilidade(Mobilidade* mobilidade, int id, char tipo[], float nivel_bateria, int alugada);
+Mobilidade* inserirMobilidade(Mobilidade* mobilidade, int id, char tipo[], float nivel_bateria, int alugada);
+Mobilidade* removerMobilidae(Mobilidade* mobilidade, int id);
+Mobilidade* atualizarMobilidade(Mobilidade* mobilidade, int id, char tipo[], float nivel_bateria, int alugada);
