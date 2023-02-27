@@ -25,6 +25,7 @@
     <ClInclude Include="mobilidade.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="cliente.c" />
     <ClCompile Include="main.c" />
     <ClCompile Include="menu.c" />
   </ItemGroup>
