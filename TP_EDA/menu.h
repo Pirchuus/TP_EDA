@@ -12,9 +12,9 @@ void mostraClienteMenu();
 
 #pragma endregion
 
-mobilidade_eletrica* mobility_list = NULL;
-cliente* customer_list = NULL;
-gestor* manager_list = NULL;
+//mobilidade_eletrica* mobility_list = NULL;
+//cliente* customer_list = NULL;
+//gestor* manager_list = NULL;
 
 #pragma region Cliente
 
