@@ -9,106 +9,85 @@
 // cliente *lista_cliente = NULL;
 // gestor *lista_gestor = NULL;
 
-// int main(){
 
-//     cliente *new_cliente = (cliente *) malloc(sizeof(cliente));
-//     new_cliente->id = 1;
-//     strcpy(new_cliente->nome, "João");
-//     new_cliente->saldo = 100.00;
-//     new_cliente->mobilidade_alugada = NULL;
-//     new_cliente->next = lista_cliente; // Inserir no início da lista
-//     lista_cliente = new_cliente; // Atualizar o início da lista
+// cliente *new_cliente = (cliente *) malloc(sizeof(cliente));
+// new_cliente->id = 1;
+// strcpy(new_cliente->nome, "João");
+// new_cliente->saldo = 100.00;
+// new_cliente->mobilidade_alugada = NULL;
+// new_cliente->next = lista_cliente; // Inserir no início da lista
+// lista_cliente = new_cliente; // Atualizar o início da lista
 
-//     cliente *new_cliente = (cliente *) malloc(sizeof(cliente));
-//     new_cliente->id = 2;
-//     strcpy(new_cliente->nome, "João");
-//     new_cliente->saldo = 100.00;
-//     new_cliente->mobilidade_alugada = NULL;
-//     new_cliente->next = lista_cliente; // Inserir no início da lista
-//     lista_cliente = new_cliente; // Atualizar o início da lista
+// cliente *new_cliente = (cliente *) malloc(sizeof(cliente));
+// new_cliente->id = 2;
+// strcpy(new_cliente->nome, "João");
+// new_cliente->saldo = 100.00;
+// new_cliente->mobilidade_alugada = NULL;
+// new_cliente->next = lista_cliente; // Inserir no início da lista
+// lista_cliente = new_cliente; // Atualizar o início da lista
 
-//     // Criar um novo gestor
-//     gestor *new_gestor = (gestor *) malloc(sizeof(gestor));
-//     new_gestor->id = 1;
-//     strcpy(new_gestor->nome, "Ana");
-//     strcpy(new_gestor->password, "1234");
-//     new_gestor->next = lista_gestor;
-//     lista_gestor = new_gestor;
+// // Criar um novo gestor
+// gestor *new_gestor = (gestor *) malloc(sizeof(gestor));
+// new_gestor->id = 1;
+// strcpy(new_gestor->nome, "Ana");
+// strcpy(new_gestor->password, "1234");
+// new_gestor->next = lista_gestor;
+// lista_gestor = new_gestor;
 
-//     // Criar um novo meio de mobilidade elétrica
-//     mobilidade_eletrica *new_mobilidade = (mobilidade_eletrica *) malloc(sizeof(mobilidade_eletrica));
-//     new_mobilidade->id = 1;
-//     strcpy(new_mobilidade->tipo, "bicicleta elétrica");
-//     new_mobilidade->nivel_bateria = 100.0;
-//     new_mobilidade->alugada = 0;
-//     new_mobilidade->next = lista_mobilidade;
-//     lista_mobilidade = new_mobilidade;
+// // Criar um novo meio de mobilidade elétrica
+// mobilidade_eletrica *new_mobilidade = (mobilidade_eletrica *) malloc(sizeof(mobilidade_eletrica));
+// new_mobilidade->id = 1;
+// strcpy(new_mobilidade->tipo, "bicicleta elétrica");
+// new_mobilidade->nivel_bateria = 100.0;
+// new_mobilidade->alugada = 0;
+// new_mobilidade->next = lista_mobilidade;
+// lista_mobilidade = new_mobilidade;
 
-
-// }
-
-// #define MAXNOME 40
-
-// //Funções para AutoIncrementar os ID's por uma File
-// int autoIdJob() {
-// 	int idJob;
-// 	FILE* idFile = fopen("idJob.txt", "r");
-// 	if (!idFile) {
-// 		idFile = fopen("idJob.txt", "w");
-// 		if (!idFile) return -1; // Erro
-// 		fprintf(idFile, "%d", 1);
-// 		fclose(idFile);
-// 		return 1;
-// 	}
-// 	fscanf(idFile, "%d", &idJob); // Lê o ID e Incrementa 1 Valor
-// 	idJob++;
-
-// 	fclose(idFile); // Fecha a File
-// 	idFile = fopen("idJob.txt", "w"); // Reabre a File
-// 	fprintf(idFile, "%d", idJob);
-// 	fclose(idFile);
-// 	return idJob;
-// }
-
-// int autoIdOp() {
-// 	int idOp;
-// 	FILE* idFile = fopen("idOp.txt", "r");
-// 	if (!idFile) {
-// 		idFile = fopen("idOp.txt", "w");
-// 		if (!idFile) return -1; // Erro
-// 		fprintf(idFile, "%d", 1);
-// 		fclose(idFile);
-// 		return 1;
-// 	}
-// 	fscanf(idFile, "%d", &idOp); // Lê o ID e Incrementa 1 Valor
-// 	idOp++;
-
-// 	fclose(idFile); // Fecha a File
-// 	idFile = fopen("idOp.txt", "w"); // Reabre a File
-// 	fprintf(idFile, "%d", idOp);
-// 	fclose(idFile);
-// 	return idOp;
-// }
-
-// int autoIdMaq() {
-// 	int idMaq;
-// 	FILE* idFile = fopen("idMaq.txt", "r");
-// 	if (!idFile) {
-// 		idFile = fopen("idMaq.txt", "w");
-// 		if (!idFile) return -1; // Erro
-// 		fprintf(idFile, "%d", 1);
-// 		fclose(idFile);
-// 		return 1;
-// 	}
-// 	fscanf(idFile, "%d", &idMaq); // Lê o ID e Incrementa 1 Valor
-// 	idMaq++;
-
-// 	fclose(idFile); // Fecha a File
-// 	idFile = fopen("idMaq.txt", "w"); // Reabre a File
-// 	fprintf(idFile, "%d", idMaq);
-// 	fclose(idFile);
-// 	return idMaq;
-// }
+//void listarDescAutonomia() {
+//
+//	// Obter o número de meios de mobilidade elétrica na lista
+//	int num_mobilities = 0;
+//	electric_mobility* current_mobility = mobility_list;
+//	while (current_mobility != NULL) {
+//		num_mobilities++;
+//		current_mobility = current_mobility->next;
+//	}
+//
+//	// Armazenar os dados dos meios de mobilidade elétrica em um vetor de estruturas
+//	electric_mobility* mobility_array = (electric_mobility*)malloc(num_mobilities * sizeof(electric_mobility));
+//	current_mobility = mobility_list;
+//	for (int i = 0; i < num_mobilities; i++) {
+//		mobility_array[i].id = current_mobility->id;
+//		strcpy(mobility_array[i].type, current_mobility->type);
+//		mobility_array[i].battery_level = current_mobility->battery_level;
+//		mobility_array[i].autonomy = current_mobility->autonomy;
+//		current_mobility = current_mobility->next;
+//	}
+//
+//	// Ordenar o vetor de meios de mobilidade elétrica em ordem decrescente de autonomia
+//	for (int i = 0; i < num_mobilities - 1; i++) {
+//		int max_index = i;
+//		for (int j = i + 1; j < num_mobilities; j++) {
+//			if (mobility_array[j].autonomy > mobility_array[max_index].autonomy) {
+//				max_index = j;
+//			}
+//		}
+//		electric_mobility temp = mobility_array[i];
+//		mobility_array[i] = mobility_array[max_index];
+//		mobility_array[max_index] = temp;
+//	}
+//
+//	// Imprimir os dados dos meios de mobilidade elétrica na ordem do vetor ordenado
+//	for (int i = 0; i < num_mobilities; i++) {
+//		printf("ID: %d\n", mobility_array[i].id);
+//		printf("Type: %s\n", mobility_array[i].type);
+//		printf("Battery level: %.2f\n", mobility_array[i].battery_level);
+//		printf("Autonomy: %.2f\n", mobility_array[i].autonomy);
+//		printf("-------------------------\n");
+//	}
+//
+//	free(mobility_array);
+//}
 
 
 int main() {
@@ -172,22 +151,22 @@ int main() {
 				{
 
 				case 1:
-					//listarOperacoes(op, maq);
+					//listar...;
 					system("pause");
 					break;
 
 				case 2:
-					//op = criaOperacao(op, job);
+					// = inserir...;
 					system("pause");
 					break;
 
 				case 3:
-					//op = removeOperacao(op);
+					// = remover...;
 					system("pause");
 					break;
 
 				case 4:
-					//op = editaOperacao(op);
+					// = alterar...;
 					system("pause");
 					break;
 
@@ -217,22 +196,22 @@ int main() {
 				switch (subOption)
 				{
 				case 1:
-					//listarOperacoes(op, maq);
+					//listar...;
 					system("pause");
 					break;
 
 				case 2:
-					//op = criaOperacao(op, job);
+					// = inserir...;
 					system("pause");
 					break;
 
 				case 3:
-					//op = removeOperacao(op);
+					// = remover...;
 					system("pause");
 					break;
 
 				case 4:
-					//op = editaOperacao(op);
+					// = alterar...;
 					system("pause");
 					break;
 
@@ -262,22 +241,22 @@ int main() {
 				switch (subOption)
 				{
 				case 1:
-					//listarOperacoes(op, maq);
+					//listar...;
 					system("pause");
 					break;
 
 				case 2:
-					//op = criaOperacao(op, job);
+					// = inserir...;
 					system("pause");
 					break;
 
 				case 3:
-					//op = removeOperacao(op);
+					// = remover...;
 					system("pause");
 					break;
 
 				case 4:
-					//op = editaOperacao(op);
+					// = alterar...;
 					system("pause");
 					break;
 
