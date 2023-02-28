@@ -14,7 +14,7 @@ void mostraMenu() {
 	printf("| 3. Mobilidade                           |\n");
 	printf("| 0. Sair                                 |\n");
 	printf("-------------------------------------------\n\n");
-	printf("Opçao: ");
+	printf("Opcao: ");
 }
 
 void mostraClienteMenu() {
@@ -27,7 +27,7 @@ void mostraClienteMenu() {
 	printf("| 4. Alterar Cliente                      |\n");
 	printf("| 0. Sair                                 |\n");
 	printf("-------------------------------------------\n\n");
-	printf("Opçao: ");
+	printf("Opcao: ");
 }
 
 void mostraGestorMenu() {
@@ -40,7 +40,7 @@ void mostraGestorMenu() {
 	printf("| 4. Alterar Gestor                       |\n");
 	printf("| 0. Sair                                 |\n");
 	printf("-------------------------------------------\n\n");
-	printf("Opçao: ");
+	printf("Opcao: ");
 }
 
 void mostraMobilidadeMenu() {
@@ -53,5 +53,5 @@ void mostraMobilidadeMenu() {
 	printf("| 4. Alterar Moblilidade                  |\n");
 	printf("| 0. Sair                                 |\n");
 	printf("-------------------------------------------\n\n");
-	printf("Opçao: ");
+	printf("Opcao: ");
 }
