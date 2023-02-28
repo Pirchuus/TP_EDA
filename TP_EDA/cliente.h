@@ -13,6 +13,7 @@ typedef struct cliente
 } Cliente;
 
 void listarClientes(Cliente* cliente);
+int existeCliente(Cliente* cliente, int id);
 Cliente* inserirCliente(Cliente* cliente, int id, char nome[], float saldo);
 Cliente* removerCliente(Cliente* cliente, int id);
 Cliente* atualizarCliente(Cliente* cliente, int id, char nome[], float saldo);

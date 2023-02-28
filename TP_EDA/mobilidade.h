@@ -4,13 +4,14 @@ typedef struct mobilidade
 {
     int id; // Identificador único do meio de mobilidade
     char tipo[20]; // Tipo do meio de mobilidade (ex: bicicleta elétrica, patinete elétrico)
-    float nivel_bateria; // Nível atual da bateria (em porcentagem)
-    int alugada; // Indica se o meio de mobilidade está alugado (1) ou não (0)
+    float nivel_bateria; // Nível atual da bateria
+    float autonomia; // autonomia do tipo do meio de mobilidade
     struct mobilidade* next; // Ponteiro para o próximo meio de mobilidade na lista
 
 } Mobilidade;
 
 void listarMobilidades(Mobilidade* mobilidade);
-Mobilidade* inserirMobilidade(Mobilidade* mobilidade, int id, char tipo[], float nivel_bateria, int alugada);
+int existeMobilidade(Mobilidade* mobilidade, int id);
+Mobilidade* inserirMobilidade(Mobilidade* mobilidade, int id, char tipo[], float nivel_bateria, float autonomia);
 Mobilidade* removerMobilidae(Mobilidade* mobilidade, int id);
-Mobilidade* atualizarMobilidade(Mobilidade* mobilidade, int id, char tipo[], float nivel_bateria, int alugada);
+Mobilidade* atualizarMobilidade(Mobilidade* mobilidade, int id, char tipo[], float nivel_bateria, float autonomia);
