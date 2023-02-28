@@ -26,8 +26,10 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="cliente.c" />
+    <ClCompile Include="gestor.c" />
     <ClCompile Include="main.c" />
     <ClCompile Include="menu.c" />
+    <ClCompile Include="mobilidade.c" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

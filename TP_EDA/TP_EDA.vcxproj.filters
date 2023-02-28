@@ -38,5 +38,11 @@
     <ClCompile Include="cliente.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="mobilidade.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="gestor.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
