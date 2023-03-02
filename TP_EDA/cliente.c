@@ -60,7 +60,7 @@ int existeCliente(Cliente* cliente, int id) {
 
 
 // Função para Remover um Registo de um Cliente pelo ID
-Cliente* removerMeio(Cliente* cliente, int id) {
+Cliente* removerCliente(Cliente* cliente, int id) {
 
 	Cliente* anterior = cliente, *atual = cliente, *aux;
 

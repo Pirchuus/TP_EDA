@@ -13,5 +13,5 @@ typedef struct mobilidade
 void listarMobilidades(Mobilidade* mobilidade);
 int existeMobilidade(Mobilidade* mobilidade, int id);
 Mobilidade* inserirMobilidade(Mobilidade* mobilidade, int id, char tipo[], float nivel_bateria, float autonomia);
-Mobilidade* removerMobilidae(Mobilidade* mobilidade, int id);
+Mobilidade* removerMobilidade(Mobilidade* mobilidade, int id);
 Mobilidade* atualizarMobilidade(Mobilidade* mobilidade, int id, char tipo[], float nivel_bateria, float autonomia);
