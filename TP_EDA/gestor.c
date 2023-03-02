@@ -13,8 +13,6 @@ void listarGestores(Gestor* gestor) {
 	while (gestor != NULL)
 	{
 		printf("ID: %d     NOME: %s     PASSWORD: %s\n", gestor->id, gestor->nome, gestor->password);
-		printf("................................................................\n\n");
-
 		gestor = gestor->next;
 	}
 	printf("----------------------------------------------------------------------\n\n");
