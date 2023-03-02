@@ -22,19 +22,18 @@ void listarClientes(Cliente* cliente) {
 		{
 			printf("Nenhuma mobilidade alugada\n");
 		}
-		printf("................................................................\n\n");
-
 		cliente = cliente->next;
 	}
-	printf("----------------------------------------------------------------------\n\n");
+	printf("\n----------------------------------------------------------------------\n\n");
 }
 
 // Função para Criar um Novo Registo de um Cliente
 Cliente* inserirCliente(Cliente* cliente, int id, char nome[], float saldo) {
 
+	Cliente* novo = (Cliente*)malloc(sizeof(Cliente));
+
 	if (!existeCliente(cliente, id))
 	{
-		Cliente* novo = (Cliente*)malloc(sizeof(Cliente));
 		if (novo != NULL)
 		{
 			novo->id = id;

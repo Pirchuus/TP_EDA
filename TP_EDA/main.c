@@ -5,10 +5,6 @@
 #include <conio.h>
 #include "menu.h"
 
-// mobilidade_eletrica *lista_mobilidade = NULL;
-// cliente *lista_cliente = NULL;
-// gestor *lista_gestor = NULL;
-
 
 // cliente *new_cliente = (cliente *) malloc(sizeof(cliente));
 // new_cliente->id = 1;
@@ -96,6 +92,9 @@ int main() {
 	int option;
 	int subOption;
 
+	//Cliente* clientes = NULL;
+	//Gestor* gestores = NULL;
+
 	// Inserção de Máquinas Predefinidas
 	//Maquina* maq = NULL;
 
@@ -128,6 +127,13 @@ int main() {
 	//job = associarOperacao(job, 1, 2);
 	//job = associarOperacao(job, 1, 1);
 	//job = associarOperacao(job, 2, 1);
+
+
+	Mobilidade* meios = NULL;
+
+	meios = inserirMobilidade(meios, 1, "bicicleta", 55, 30);
+	meios = inserirMobilidade(meios, 2, "bicicleta", 85, 50);
+	meios = inserirMobilidade(meios, 3, "trotinete", 85, 50);
 
 	do
 	{
@@ -241,7 +247,7 @@ int main() {
 				switch (subOption)
 				{
 				case 1:
-					//listar...;
+					listarMobilidades(meios);
 					system("pause");
 					break;
 
