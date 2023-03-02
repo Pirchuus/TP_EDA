@@ -3,7 +3,7 @@
 typedef struct mobilidade
 {
     int id; // Identificador único do meio de mobilidade
-    char tipo[20]; // Tipo do meio de mobilidade (ex: bicicleta elétrica, patinete elétrico)
+    char tipo[100]; // Tipo do meio de mobilidade
     float nivel_bateria; // Nível atual da bateria
     float autonomia; // autonomia do tipo do meio de mobilidade
     struct mobilidade* next; // Ponteiro para o próximo meio de mobilidade na lista
