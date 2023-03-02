@@ -30,7 +30,7 @@ Gestor* inserirGestor(Gestor* gestor, int id, char nome[], char password[]) {
 		{
 			novo->id = id;
 			strcpy(novo->nome, nome);
-			strycpy(novo->password, password);
+			strcpy(novo->password, password);
 			novo->next = gestor;
 			return(novo);
 		}
