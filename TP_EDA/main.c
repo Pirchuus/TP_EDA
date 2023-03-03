@@ -5,40 +5,6 @@
 #include <conio.h>
 #include "menu.h"
 
-
-// cliente *new_cliente = (cliente *) malloc(sizeof(cliente));
-// new_cliente->id = 1;
-// strcpy(new_cliente->nome, "João");
-// new_cliente->saldo = 100.00;
-// new_cliente->mobilidade_alugada = NULL;
-// new_cliente->next = lista_cliente; // Inserir no início da lista
-// lista_cliente = new_cliente; // Atualizar o início da lista
-
-// cliente *new_cliente = (cliente *) malloc(sizeof(cliente));
-// new_cliente->id = 2;
-// strcpy(new_cliente->nome, "João");
-// new_cliente->saldo = 100.00;
-// new_cliente->mobilidade_alugada = NULL;
-// new_cliente->next = lista_cliente; // Inserir no início da lista
-// lista_cliente = new_cliente; // Atualizar o início da lista
-
-// // Criar um novo gestor
-// gestor *new_gestor = (gestor *) malloc(sizeof(gestor));
-// new_gestor->id = 1;
-// strcpy(new_gestor->nome, "Ana");
-// strcpy(new_gestor->password, "1234");
-// new_gestor->next = lista_gestor;
-// lista_gestor = new_gestor;
-
-// // Criar um novo meio de mobilidade elétrica
-// mobilidade_eletrica *new_mobilidade = (mobilidade_eletrica *) malloc(sizeof(mobilidade_eletrica));
-// new_mobilidade->id = 1;
-// strcpy(new_mobilidade->tipo, "bicicleta elétrica");
-// new_mobilidade->nivel_bateria = 100.0;
-// new_mobilidade->alugada = 0;
-// new_mobilidade->next = lista_mobilidade;
-// lista_mobilidade = new_mobilidade;
-
 //void listarDescAutonomia() {
 //
 //	// Obter o número de meios de mobilidade elétrica na lista
@@ -92,48 +58,25 @@ int main() {
 	int option;
 	int subOption;
 
-	//Cliente* clientes = NULL;
-	//Gestor* gestores = NULL;
-
-	// Inserção de Máquinas Predefinidas
-	//Maquina* maq = NULL;
-
-	//maq = inserirMaquina(maq, 1, "Maquina1", 3, "Piso1");
-	//maq = inserirMaquina(maq, 2, "Maquina2", 7, "Piso2");
-	//maq = inserirMaquina(maq, 3, "Maquina3", 5, "Piso3");
-
-	// Inserção de Operações Predefinidas
-	//Operacao* op = NULL;
-
-	//op = inserirOperacao(op, 1, "Op1");
-	//op = inserirOperacao(op, 2, "Op2");
-	//op = inserirOperacao(op, 3, "Op3");
-
-	// Associação de Operações a Máquinas Predefinidas
-	//op = associarMaquina(op, 1, 1);
-	//op = associarMaquina(op, 1, 2);
-	//op = associarMaquina(op, 2, 2);
-	//op = associarMaquina(op, 2, 3);
-	//op = associarMaquina(op, 3, 2);
-
-
-	// Inserção de Jobs Predefinidos
-	//Job* job = NULL;
-	//job = inserirJob(job, 1, "Trabalho1");
-	//job = inserirJob(job, 2, "Trabalho2");
-
-
-	// Associar Operações a Jobs Predefinidos
-	//job = associarOperacao(job, 1, 2);
-	//job = associarOperacao(job, 1, 1);
-	//job = associarOperacao(job, 2, 1);
-
-
+	// Inserçao de Meio Predefenidos
 	Mobilidade* meios = NULL;
 
 	meios = inserirMobilidade(meios, 1, "bicicleta", 55, 30);
 	meios = inserirMobilidade(meios, 2, "bicicleta", 85, 50);
 	meios = inserirMobilidade(meios, 3, "trotinete", 85, 50);
+
+	// Inserção de Clientes Predefenidos
+	Cliente* clientes = NULL;
+
+
+
+
+	// Inserção de Gestores Predefenidos
+	Gestor* gestores = NULL;
+
+
+
+
 
 	do
 	{

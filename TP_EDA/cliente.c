@@ -12,7 +12,7 @@ void listarClientes(Cliente* cliente) {
 
 	while (cliente != NULL)
 	{
-		printf("ID: %d     NOME: %s     SALDO: %.2f\n", cliente->id, cliente->nome, cliente->saldo);
+		printf("ID: %d     NOME: %s     SALDO: %.2f\n", cliente->nif, cliente->nome, cliente->saldo);
 
 		if (cliente->mobilidade_alugada != NULL)
 		{
@@ -28,15 +28,15 @@ void listarClientes(Cliente* cliente) {
 }
 
 // Função para Criar um Novo Registo de um Cliente
-Cliente* inserirCliente(Cliente* cliente, int id, char nome[], float saldo) {
+Cliente* inserirCliente(Cliente* cliente, int nif, char nome[], float saldo) {
 
 	Cliente* novo = (Cliente*)malloc(sizeof(Cliente));
 
-	if (!existeCliente(cliente, id))
+	if (!existeCliente(cliente, nif))
 	{
 		if (novo != NULL)
 		{
-			novo->id = id;
+			novo->nif = nif;
 			strcpy(novo->nome, nome);
 			novo->saldo = saldo;
 			novo->next = cliente;
@@ -47,32 +47,32 @@ Cliente* inserirCliente(Cliente* cliente, int id, char nome[], float saldo) {
 	else return(cliente);
 }
 
-// Função para Verificar se um Registo de um Cliente ja existe pelo ID
-int existeCliente(Cliente* cliente, int id) {
+// Função para Verificar se um Registo de um Cliente ja existe pelo NIF
+int existeCliente(Cliente* cliente, int nif) {
 
 	while (cliente != NULL)
 	{
-		if (cliente->id = id) return(1);
+		if (cliente->nif = nif) return(1);
 		cliente = cliente->next;
 	}
 	return(0);
 }
 
 
-// Função para Remover um Registo de um Cliente pelo ID
-Cliente* removerCliente(Cliente* cliente, int id) {
+// Função para Remover um Registo de um Cliente pelo NIF
+Cliente* removerCliente(Cliente* cliente, int nif) {
 
 	Cliente* anterior = cliente, *atual = cliente, *aux;
 
 	if (atual == NULL) return NULL;
-	else if (atual->id == id)
+	else if (atual->nif == nif)
 	{
 		aux = atual->next;
 		free(atual);
 	}
 	else
 	{
-		while ((atual != NULL) && (atual->id != id))
+		while ((atual != NULL) && (atual->nif != nif))
 		{
 			anterior = atual;
 			atual = atual->next;
@@ -85,4 +85,25 @@ Cliente* removerCliente(Cliente* cliente, int id) {
 			return(cliente);
 		}
 	}
+}
+
+
+Cliente* atualizarCliente(Cliente* cliente, int nif, char nomeNovo[], float saldo) {
+	Cliente* nodoAtual = cliente;
+	Cliente* nodoAnterior;
+
+	while (nodoAtual != NULL && nodoAtual->nif != nif)
+	{
+		nodoAnterior = nodoAtual;
+		nodoAtual = nodoAtual->next;
+	}
+
+	if (nodoAtual != NULL)
+	{
+		nodoAtual->nif = nif;
+		strcpy(nodoAtual->nome, nomeNovo);
+		nodoAtual->saldo = saldo;
+	}
+
+	return(cliente);
 }

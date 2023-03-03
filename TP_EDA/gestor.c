@@ -75,3 +75,23 @@ Gestor* removerGestor(Gestor* gestor, int id) {
 		}
 	}
 }
+
+
+Gestor* alterarGestor(Gestor* gestor, int id, char nomeNovo[], char passwordNova[]) {
+	Gestor* nodoAtual = gestor;
+	Gestor* nodoAnterior;
+
+	while (nodoAtual != NULL && nodoAtual->id != id)
+	{
+		nodoAnterior = nodoAtual;
+		nodoAtual = nodoAtual->next;
+	}
+
+	if (nodoAtual != NULL)
+	{
+		strcpy(nodoAtual->nome, nomeNovo);
+		strcpy(nodoAtual->password, passwordNova);
+	}
+
+	return(gestor);
+}

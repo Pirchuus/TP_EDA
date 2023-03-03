@@ -95,3 +95,25 @@ Mobilidade* removerMobilidade(Mobilidade* mobilidade, int id) {
 		}
 	}
 }
+
+
+Mobilidade* alterarMobilidade(Mobilidade* mobilidade, int id, char tipo[], float nivel_bateria, float autonomia) {
+	Mobilidade* nodoAtual = mobilidade;
+	Mobilidade* nodoAnterior;
+
+	while (nodoAtual != NULL && nodoAtual->id != id)
+	{
+		nodoAnterior = nodoAtual;
+		nodoAtual = nodoAtual->next;
+	}
+
+	if (nodoAtual != NULL)
+	{
+		nodoAtual->id = id;
+		strcpy(nodoAtual->tipo, tipo);
+		nodoAtual->nivel_bateria = nivel_bateria;
+		nodoAtual->autonomia = autonomia;
+	}
+
+	return(mobilidade);
+}
