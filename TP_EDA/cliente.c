@@ -6,45 +6,45 @@
 // Funçao para Listar todos os clientes
 void listarClientes(Cliente* cliente) {
 
-	printf("----------------------------------------------------------------------\n");
-	printf("                            Lista Clientes                            \n");
-	printf("----------------------------------------------------------------------\n\n");
+	printf("------------------------------------------------------------------------------------------------------\n");
+	printf("                                     Lista Clientes                                                   \n");
+	printf("------------------------------------------------------------------------------------------------------\n\n");
 
 	while (cliente != NULL)
 	{
-		printf("ID: %d     NOME: %s     SALDO: %.2f\n", cliente->nif, cliente->nome, cliente->saldo);
+		printf("\tNIF: %d     NOME: %s     E-MAIL: %s     SALDO: %.2f\n", cliente->nif, cliente->nome, cliente->email, cliente->saldo);
 
 		if (cliente->mobilidade_alugada != NULL)
 		{
-			printf("ID da Mobilidade alugada: %d\n", cliente->mobilidade_alugada->id);
+			printf("\tID da Mobilidade alugada: %d\n\n", cliente->mobilidade_alugada->id);
 		}
 		else
 		{
-			printf("Nenhuma mobilidade alugada\n");
+			printf("\tNenhuma mobilidade alugada\n\n");
 		}
 		cliente = cliente->next;
 	}
-	printf("\n----------------------------------------------------------------------\n\n");
+	printf("\n------------------------------------------------------------------------------------------------------\n\n");
 }
 
 // Função para Criar um Novo Registo de um Cliente
-Cliente* inserirCliente(Cliente* cliente, int nif, char nome[], float saldo) {
+Cliente* inserirCliente(Cliente* cliente, int nif, char nome[], char email[], float saldo) {
 
-	Cliente* novo = (Cliente*)malloc(sizeof(Cliente));
-
-	if (!existeCliente(cliente, nif))
+	if (!existeMobilidade(cliente, nif))
 	{
+		Cliente* novo = malloc(sizeof(struct cliente));
 		if (novo != NULL)
 		{
 			novo->nif = nif;
 			strcpy(novo->nome, nome);
+			strcpy(novo->email, email);
 			novo->saldo = saldo;
-			novo->next = cliente;
 			novo->mobilidade_alugada = NULL;
-			return(novo);
+			novo->next = cliente;
+			return (novo);
 		}
+		else return(cliente);
 	}
-	else return(cliente);
 }
 
 // Função para Verificar se um Registo de um Cliente ja existe pelo NIF
@@ -88,7 +88,7 @@ Cliente* removerCliente(Cliente* cliente, int nif) {
 }
 
 
-Cliente* atualizarCliente(Cliente* cliente, int nif, char nomeNovo[], float saldo) {
+Cliente* alterarCliente(Cliente* cliente, int nif, char nomeNovo[], char emailNovo[], float saldo) {
 	Cliente* nodoAtual = cliente;
 	Cliente* nodoAnterior;
 
@@ -102,6 +102,7 @@ Cliente* atualizarCliente(Cliente* cliente, int nif, char nomeNovo[], float sald
 	{
 		nodoAtual->nif = nif;
 		strcpy(nodoAtual->nome, nomeNovo);
+		strcpy(nodoAtual->email, emailNovo);
 		nodoAtual->saldo = saldo;
 	}
 

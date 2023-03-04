@@ -6,62 +6,43 @@
 // Funçao para Listar todas as Mobilidades
 void listarMobilidades(Mobilidade* mobilidade) {
 
-	printf("-------------------------------------------------------------------------------------------\n");
-	printf("                          Lista Mobilidades                           \n");
-	printf("-------------------------------------------------------------------------------------------\n\n");
+	printf("------------------------------------------------------------------------------------------------------\n");
+	printf("                                          Lista Mobilidades                                           \n");
+	printf("------------------------------------------------------------------------------------------------------\n\n");
 
 	while (mobilidade != NULL)
 	{
 		printf("\tID: %d     TIPO: %s     BATERIA: %.2f     AUTONOMIA: %.2f\n", mobilidade->id, mobilidade->tipo, mobilidade->nivel_bateria, mobilidade->autonomia);
 		mobilidade = mobilidade->next;
 	}
-	printf("\n-------------------------------------------------------------------------------------------\n\n");
+	printf("\n------------------------------------------------------------------------------------------------------\n\n");
 }
 
 // Função para Criar um Novo Registo de uma Mobilidade
 Mobilidade* inserirMobilidade(Mobilidade* mobilidade, int id, char tipo[], float nivel_bateria, float autonomia) {
 
-	Mobilidade* novo = (Mobilidade*)malloc(sizeof(Mobilidade));
-
-	if (novo != NULL) 
+	if (!existeMobilidade(mobilidade, id))
 	{
-		Mobilidade* mobAux = mobilidade;
-		Mobilidade* mobAux2 = mobilidade;
-		
-		while (mobAux != NULL) 
+		Mobilidade* novo = malloc(sizeof(struct mobilidade));
+		if (novo != NULL)
 		{
-			mobAux2 = mobAux;
-			mobAux = mobAux->next;
-		}
-		
-		novo->id = id;
-		strcpy(novo->tipo, tipo);
-		novo->nivel_bateria = nivel_bateria;
-		novo->autonomia = autonomia;
-		novo->next = NULL;
-		
-		if (mobAux2 != NULL) 
-		{
-			mobAux2->next = novo;
-			return (mobilidade);
-		}
-		else 
-		{
+			novo->id = id;
+			strcpy(novo->tipo, tipo);
+			novo->nivel_bateria = nivel_bateria;
+			novo->autonomia = autonomia;
+			novo->next = mobilidade;
 			return (novo);
 		}
-	}
-	else 
-	{
-		return(mobilidade);
+		else return(mobilidade);
 	}
 }
 
 // Função para Verificar se um Registo de uma Mobilidade ja existe pelo ID
-int existeMobilidade(Mobilidade* mobilidade, int id) {
-
+int existeMobilidade(Mobilidade* mobilidade, int id)
+{
 	while (mobilidade != NULL)
 	{
-		if (mobilidade->id = id) return(1);
+		if (mobilidade->id == id) return(1);
 		mobilidade = mobilidade->next;
 	}
 	return(0);

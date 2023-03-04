@@ -68,15 +68,15 @@ int main() {
 	// Inserção de Clientes Predefenidos
 	Cliente* clientes = NULL;
 
-
-
+	clientes = inserirCliente(clientes, 123456789, "Antonio", "antonio1234@gmail.com", 50);
+	clientes = inserirCliente(clientes, 987654321, "Maria", "mariagomes@gmail.com", 50);
+	clientes = inserirCliente(clientes, 112233445, "Rita", "rita.2003@gmail.com", 50);
 
 	// Inserção de Gestores Predefenidos
 	Gestor* gestores = NULL;
 
-
-
-
+	gestores = inserirGestor(gestores, 1, "Jose", "abcdefg");
+	gestores = inserirGestor(gestores, 2, "Manuela", "qwerty");
 
 	do
 	{
@@ -100,7 +100,7 @@ int main() {
 				{
 
 				case 1:
-					//listar...;
+					listarClientes(clientes);
 					system("pause");
 					break;
 
@@ -145,7 +145,7 @@ int main() {
 				switch (subOption)
 				{
 				case 1:
-					//listar...;
+					listarGestores(gestores);
 					system("pause");
 					break;
 

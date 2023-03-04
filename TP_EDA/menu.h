@@ -16,11 +16,9 @@ void mostraClienteMenu();
 
 #pragma region Cliente
 
-void listarClientes(Cliente* cliente);
-int existeCliente(Cliente* cliente, int id);
-Cliente* inserirCliente(Cliente* cliente, int id, char nome[], float saldo);
-Cliente* removerCliente(Cliente* cliente, int id);
-Cliente* atualizarCliente(Cliente* cliente, int id, char nome[], float saldo);
+Cliente* criaCliente(Cliente* cliente);
+Cliente* removeCliente(Cliente* cliente);
+Cliente* editaCliente(Cliente* cliente);
 
 #pragma endregion
 
@@ -28,11 +26,9 @@ Cliente* atualizarCliente(Cliente* cliente, int id, char nome[], float saldo);
 
 #pragma region Mobiblidade
 
-void listarMobilidades(Mobilidade* mobilidade);
-int existeMobilidade(Mobilidade* mobilidade, int id);
-Mobilidade* inserirMobilidade(Mobilidade* mobilidade, int id, char tipo[], float nivel_bateria, float autonomia);
-Mobilidade* removerMobilidae(Mobilidade* mobilidade, int id);
-Mobilidade* atualizarMobilidade(Mobilidade* mobilidade, int id, char tipo[], float nivel_bateria, float autonomia);
+Mobilidade* criaMobilidade(Mobilidade* mobilidade);
+Mobilidade* removeMobilidade(Mobilidade* mobilidade);
+Mobilidade* editaMobilidade(Mobilidade* mobilidade);
 
 #pragma endregion
 
@@ -40,10 +36,8 @@ Mobilidade* atualizarMobilidade(Mobilidade* mobilidade, int id, char tipo[], flo
 
 #pragma region Gestor
 
-void listarGestores(Gestor* gestor);
-int existeGestor(Gestor* gestor, int id);
-Gestor* inserirGestor(Gestor* gestor, int id, char nome[], char password[]);
-Gestor* removerGestor(Gestor* gestor, int id);
-Gestor* atualizarGestor(Gestor* gestor, int id, char nome[], char password[]);
+Gestor* criaGestor(Gestor* gestor);
+Gestor* removeGestor(Gestor* gestor);
+Gestor* editaGestor(Gestor* gestor);
 
 #pragma endregion

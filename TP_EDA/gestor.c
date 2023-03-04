@@ -6,16 +6,16 @@
 // Funçao para Listar todos os Gestores
 void listarGestores(Gestor* gestor) {
 
-	printf("----------------------------------------------------------------------\n");
-	printf("                            Lista Gestores                            \n");
-	printf("----------------------------------------------------------------------\n\n");
+	printf("------------------------------------------------------------------------------------------------------\n");
+	printf("                                            Lista Gestores                                            \n");
+	printf("------------------------------------------------------------------------------------------------------\n\n");
 
 	while (gestor != NULL)
 	{
-		printf("ID: %d     NOME: %s     PASSWORD: %s\n", gestor->id, gestor->nome, gestor->password);
+		printf("\tID: %d     NOME: %s     PASSWORD: %s\n", gestor->id, gestor->nome, gestor->password);
 		gestor = gestor->next;
 	}
-	printf("----------------------------------------------------------------------\n\n");
+	printf("------------------------------------------------------------------------------------------------------\n\n");
 }
 
 // Função para Criar um Novo Registo de um Gestor
@@ -23,7 +23,7 @@ Gestor* inserirGestor(Gestor* gestor, int id, char nome[], char password[]) {
 
 	if (!existeGestor(gestor, id))
 	{
-		Gestor* novo = (Gestor*)malloc(sizeof(Gestor));
+		Gestor* novo = malloc(sizeof(struct gestor));
 		if (novo != NULL)
 		{
 			novo->id = id;
@@ -32,8 +32,8 @@ Gestor* inserirGestor(Gestor* gestor, int id, char nome[], char password[]) {
 			novo->next = gestor;
 			return(novo);
 		}
+		else return(gestor);
 	}
-	else return(gestor);
 }
 
 // Função para Verificar se um Registo de um Gestor ja existe pelo ID

@@ -13,4 +13,4 @@ void listarGestores(Gestor* gestor);
 int existeGestor(Gestor* gestor, int id);
 Gestor* inserirGestor(Gestor* gestor, int id, char nome[], char password[]);
 Gestor* removerGestor(Gestor* gestor, int id);
-Gestor* atualizarGestor(Gestor* gestor, int id, char nome[], char password[]);
+Gestor* alterarGestor(Gestor* gestor, int id, char nome[], char password[]);

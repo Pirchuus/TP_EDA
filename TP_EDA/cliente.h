@@ -6,6 +6,7 @@ typedef struct cliente
 {
     int nif; // Identificador único do cliente
     char nome[50]; // Nome do cliente
+    char email[50]; // E-mail do cliente
     float saldo; // Saldo disponível na carteira do cliente
     struct mobilidade* mobilidade_alugada; // Ponteiro para o meio de mobilidade elétrica alugado pelo cliente (ou NULL se não estiver alugando nenhum)
     struct cliente* next; // Ponteiro para o próximo cliente na lista
@@ -14,7 +15,7 @@ typedef struct cliente
 
 void listarClientes(Cliente* cliente);
 int existeCliente(Cliente* cliente, int nif);
-Cliente* inserirCliente(Cliente* cliente, int nif, char nome[], float saldo);
+Cliente* inserirCliente(Cliente* cliente, int nif, char nome[], char email[], float saldo);
 Cliente* removerCliente(Cliente* cliente, int nif);
-Cliente* atualizarCliente(Cliente* cliente, int nif, char nome[], float saldo);
+Cliente* atualizarCliente(Cliente* cliente, int nif, char nome[], char email[], float saldo);
 
