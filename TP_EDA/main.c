@@ -72,6 +72,9 @@ int main() {
 	clientes = inserirCliente(clientes, 987654321, "Maria", "mariagomes@gmail.com", 50);
 	clientes = inserirCliente(clientes, 112233445, "Rita", "rita.2003@gmail.com", 50);
 
+	// Associação de Mobilidades aos Clientes
+	clientes = associarMobilidade(clientes, 123456789, 1);
+
 	// Inserção de Gestores Predefenidos
 	Gestor* gestores = NULL;
 
@@ -100,7 +103,7 @@ int main() {
 				{
 
 				case 1:
-					listarClientes(clientes);
+					listarClientes(clientes, meios);
 					system("pause");
 					break;
 
@@ -119,12 +122,27 @@ int main() {
 					system("pause");
 					break;
 
+				case 5:
+					// = associar...;
+					system("pause");
+					break;
+
+				case 6:
+					// = desassociar...;
+					system("pause");
+					break;
+
+				case 7:
+					exportarClientes(clientes, meios);
+					system("pause");
+					break;
+
 				case 0:
 					subOption = 0;
 					break;
 
 				default:
-					printf("Opçao Inválida\n\n");
+					printf("Opçao Invalida\n\n");
 					system("pause");
 					break;
 				}
@@ -169,7 +187,7 @@ int main() {
 					break;
 
 				default:
-					printf("Opçao Inválida\n\n");
+					printf("Opçao Invalida\n\n");
 					system("pause");
 					break;
 				}
@@ -214,7 +232,7 @@ int main() {
 					break;
 
 				default:
-					printf("Opçao Inválida\n\n");
+					printf("Opçao Invalida\n\n");
 					system("pause");
 					break;
 				}
@@ -228,7 +246,7 @@ int main() {
 			break;
 
 		default:
-			printf("Opçao Inválida\n\n");
+			printf("Opçao Invalida\n\n");
 			system("pause");
 			break;
 

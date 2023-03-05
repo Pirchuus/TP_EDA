@@ -4,28 +4,57 @@
 #include "cliente.h"
 
 // Funçao para Listar todos os clientes
-void listarClientes(Cliente* cliente) {
+void listarClientes(Cliente* cliente, Mobilidade* mobilidade) {
 
 	printf("------------------------------------------------------------------------------------------------------\n");
-	printf("                                     Lista Clientes                                                   \n");
+	printf("|                                    Lista Clientes                                                  |\n");
 	printf("------------------------------------------------------------------------------------------------------\n\n");
 
 	while (cliente != NULL)
 	{
 		printf("\tNIF: %d     NOME: %s     E-MAIL: %s     SALDO: %.2f\n", cliente->nif, cliente->nome, cliente->email, cliente->saldo);
+		ClienteMobilidade* cliMobAux = cliente->mobilidade;
 
-		if (cliente->mobilidade_alugada != NULL)
+		if (cliMobAux == NULL)
 		{
-			printf("\tID da Mobilidade alugada: %d\n\n", cliente->mobilidade_alugada->id);
+			printf("\tNao tem Maquinas Associadas\n");
 		}
-		else
+		else 
 		{
-			printf("\tNenhuma mobilidade alugada\n\n");
+			while (cliMobAux != NULL)
+			{
+				Mobilidade* mobAux = mobilidade;
+
+				while (mobAux != NULL && mobAux->id != cliMobAux->idMob)
+				{
+					mobAux = mobAux->next;
+				}
+				if (mobAux != NULL) 
+				{
+					printf("\tID: %d   Tipo Mobilidade: %s     Bateria: %.2f     Autonomia: %.2f\n", mobAux->id, mobAux->tipo, mobAux->nivel_bateria, mobAux->autonomia);
+				}
+				cliMobAux = cliMobAux->next;
+			}
 		}
 		cliente = cliente->next;
 	}
 	printf("\n------------------------------------------------------------------------------------------------------\n\n");
 }
+
+void listarApenasClientes(Cliente* cliente) {
+
+	printf("------------------------------------------------------------------------------------------------------\n");
+	printf("|                                    Lista Clientes                                                  |\n");
+	printf("------------------------------------------------------------------------------------------------------\n\n");
+
+	while (cliente != NULL)
+	{
+		printf("\tNIF: %d     NOME: %s     E-MAIL: %s     SALDO: %.2f\n", cliente->nif, cliente->nome, cliente->email, cliente->saldo);
+		cliente = cliente->next;
+	}
+	printf("\n------------------------------------------------------------------------------------------------------\n\n");
+}
+
 
 // Função para Criar um Novo Registo de um Cliente
 Cliente* inserirCliente(Cliente* cliente, int nif, char nome[], char email[], float saldo) {
@@ -39,7 +68,7 @@ Cliente* inserirCliente(Cliente* cliente, int nif, char nome[], char email[], fl
 			strcpy(novo->nome, nome);
 			strcpy(novo->email, email);
 			novo->saldo = saldo;
-			novo->mobilidade_alugada = NULL;
+			novo->mobilidade = NULL;
 			novo->next = cliente;
 			return (novo);
 		}
@@ -107,4 +136,90 @@ Cliente* alterarCliente(Cliente* cliente, int nif, char nomeNovo[], char emailNo
 	}
 
 	return(cliente);
+}
+
+
+// Função para Associar uma Mobilidade a um Cliente
+Cliente* associarMobilidade(Cliente* cliente, int idCliente, int idMobilidade) {
+	
+	Cliente* nodoAtual = cliente;
+	Cliente* nodoAnterior;
+
+
+	while (nodoAtual != NULL && nodoAtual->nif != idCliente)
+	{
+		nodoAnterior = nodoAtual;
+		nodoAtual = nodoAtual->next;
+	}
+
+	if (nodoAtual != NULL)
+	{
+		ClienteMobilidade* nova = (ClienteMobilidade*)malloc(sizeof(ClienteMobilidade));
+		nova->nifCliente = idCliente;
+		nova->idMob = idMobilidade;
+		nova->next = nodoAtual->mobilidade;
+
+		nodoAtual->mobilidade = nova;
+	}
+
+	return cliente;
+}
+
+//Função Para Exportar todos os Dados de um Job
+void exportarClientes(Cliente* cliente, Mobilidade* mobilidade) {
+
+	remove("ClientesExportados.txt");
+
+	FILE* exportFile = fopen("ClientesExportados.txt", "a");
+
+	Cliente* cliAux = cliente;
+
+	fprintf(exportFile, "------------------------------------------------------------------------------------------------------\n");
+	fprintf(exportFile, "|                                         LISTA DE CLIENTES                                          |\n");
+	fprintf(exportFile, "------------------------------------------------------------------------------------------------------\n\n");
+
+
+	if (cliente != NULL) {
+		while (cliAux != NULL)
+		{
+			fprintf(exportFile, "NIF: % d     NOME : % s     E-MAIL : % s     SALDO : % .2f\n", cliAux->nif, cliAux->nome, cliAux->email, cliAux->saldo);
+
+			ClienteMobilidade* CliMobAux = cliAux->mobilidade;
+
+			if (CliMobAux != NULL)
+			{
+				while (CliMobAux != NULL)
+				{
+					Mobilidade* mobAux = mobilidade;
+
+					while (mobAux != NULL && mobAux->id != CliMobAux->idMob)
+					{
+						mobAux = mobAux->next;
+					}
+					fprintf(exportFile, "\tID: %d   Tipo Mobilidade: %s     Bateria: %.2f     Autonomia: %.2f\n", mobAux->id, mobAux->tipo, mobAux->nivel_bateria, mobAux->autonomia);
+
+					CliMobAux = CliMobAux->next;
+				}
+			}
+			else
+			{
+				fprintf(exportFile, "\tSem mobilidades associadas\n");
+			}
+			fprintf(exportFile, "------------------------------------------------------------------------------------------------------\n");
+			fprintf(exportFile, "------------------------------------------------------------------------------------------------------\n\n");
+
+			cliAux = cliAux->next;
+		}
+	}
+	else
+	{
+		fprintf(exportFile, "Sem Clientes a apresentar");
+	}
+
+	fprintf(exportFile, "\n------------------------------------------------------------------------------------------------------\n");
+	fclose(exportFile);
+
+	printf("-------------------------------------------------------\n");
+	printf("|                 EXPORTADO COM SUCESSO               |\n");
+	printf("-------------------------------------------------------\n");
 }
