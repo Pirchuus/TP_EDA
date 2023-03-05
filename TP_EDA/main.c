@@ -51,6 +51,88 @@
 //	free(mobility_array);
 //}
 
+//Função Para Exportar todos os Dados
+void exportarDados(Cliente* cliente, Mobilidade* mobilidade, Gestor* gestor) {
+
+	remove("DadosExportados.txt");
+
+	FILE* exportFile = fopen("DadosExportados.txt", "a");
+
+	Cliente* cliAux = cliente;
+
+	fprintf(exportFile, "------------------------------------------------------------------------------------------------------\n");
+	fprintf(exportFile, "|                                  LISTA DE CLIENTES E MOBILIDADES                                   |\n");
+	fprintf(exportFile, "------------------------------------------------------------------------------------------------------\n\n");
+
+
+	if (cliente != NULL) {
+		while (cliAux != NULL)
+		{
+			fprintf(exportFile, "NIF: % d     NOME : % s     E-MAIL : % s     SALDO : % .2f\n", cliAux->nif, cliAux->nome, cliAux->email, cliAux->saldo);
+
+			ClienteMobilidade* CliMobAux = cliAux->mobilidade;
+
+			if (CliMobAux != NULL)
+			{
+				while (CliMobAux != NULL)
+				{
+					Mobilidade* mobAux = mobilidade;
+
+					while (mobAux != NULL && mobAux->id != CliMobAux->idMob)
+					{
+						mobAux = mobAux->next;
+					}
+					fprintf(exportFile, "\tID: %d   Tipo Mobilidade: %s     Bateria: %.2f     Autonomia: %.2f\n", mobAux->id, mobAux->tipo, mobAux->nivel_bateria, mobAux->autonomia);
+
+					CliMobAux = CliMobAux->next;
+				}
+			}
+			else
+			{
+				fprintf(exportFile, "\tSem mobilidades alugadas\n");
+			}
+			fprintf(exportFile, "------------------------------------------------------------------------------------------------------\n");
+			fprintf(exportFile, "------------------------------------------------------------------------------------------------------\n\n");
+
+			cliAux = cliAux->next;
+		}
+	}
+	else
+	{
+		fprintf(exportFile, "Sem Clientes a apresentar\n");
+	}
+
+	Gestor* gesAux = gestor;
+
+	fprintf(exportFile, "\n\n\n------------------------------------------------------------------------------------------------------\n");
+	fprintf(exportFile, "|                                         LISTA DE GESTORES                                          |\n");
+	fprintf(exportFile, "------------------------------------------------------------------------------------------------------\n\n");
+
+
+	if (gestor != NULL) {
+		while (gesAux != NULL)
+		{
+			fprintf(exportFile, "ID: %d     NOME: %s     PASSWORD: %s\n", gesAux->id, gesAux->nome, gesAux->password);
+
+			fprintf(exportFile, "------------------------------------------------------------------------------------------------------\n");
+			fprintf(exportFile, "------------------------------------------------------------------------------------------------------\n\n");
+
+			gesAux = gesAux->next;
+		}
+	}
+	else
+	{
+		fprintf(exportFile, "Sem Gestores a apresentar\n");
+	}
+
+	fclose(exportFile);
+
+	printf("-------------------------------------------------------\n");
+	printf("|              DADOS EXPORTADOS COM SUCESSO           |\n");
+	printf("-------------------------------------------------------\n");
+
+}
+
 
 int main() {
 
@@ -108,32 +190,27 @@ int main() {
 					break;
 
 				case 2:
-					// = inserir...;
+					clientes = criaCliente(clientes);
 					system("pause");
 					break;
 
 				case 3:
-					// = remover...;
+					clientes = removeCliente(clientes);
 					system("pause");
 					break;
 
 				case 4:
-					// = alterar...;
+					clientes = editaCliente(clientes);
 					system("pause");
 					break;
 
 				case 5:
-					// = associar...;
+					clientes = associaMobilidade(clientes, meios);
 					system("pause");
 					break;
 
 				case 6:
-					// = desassociar...;
-					system("pause");
-					break;
-
-				case 7:
-					exportarClientes(clientes, meios);
+					//clientes = desassociaMobilidade(clientes, meios);
 					system("pause");
 					break;
 
@@ -168,17 +245,17 @@ int main() {
 					break;
 
 				case 2:
-					// = inserir...;
+					gestores = criaGestor(gestores);
 					system("pause");
 					break;
 
 				case 3:
-					// = remover...;
+					gestores = removeGestor(gestores);
 					system("pause");
 					break;
 
 				case 4:
-					// = alterar...;
+					gestores = editaGestor(gestores);
 					system("pause");
 					break;
 
@@ -213,17 +290,17 @@ int main() {
 					break;
 
 				case 2:
-					// = inserir...;
+					meios = criaMobilidade(meios);
 					system("pause");
 					break;
 
 				case 3:
-					// = remover...;
+					meios = removeMobilidade(meios);
 					system("pause");
 					break;
 
 				case 4:
-					// = alterar...;
+					meios = editaMobilidade(meios);
 					system("pause");
 					break;
 
@@ -241,6 +318,11 @@ int main() {
 			} while (subOption != 0);
 			break;
 
+		case 4:
+			exportarDados(clientes, meios, gestores);
+			system("pause");
+			break;
+
 		case 0:
 			system("exit");
 			break;
@@ -251,6 +333,7 @@ int main() {
 			break;
 
 		}
+		system("cls");
 	} while (option != 0);
 
 }

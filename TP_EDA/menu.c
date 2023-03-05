@@ -12,6 +12,7 @@ void mostraMenu() {
 	printf("| 1. Cliente                              |\n");
 	printf("| 2. Gestor                               |\n");
 	printf("| 3. Mobilidade                           |\n");
+	printf("| 4. Exportar Dados                       |\n");
 	printf("| 0. Sair                                 |\n");
 	printf("-------------------------------------------\n\n");
 	printf("Opcao: ");
@@ -58,7 +59,7 @@ void mostraMobilidadeMenu() {
 	printf("-------------------------------------------\n\n");
 	printf("Opcao: ");
 }
-
+#pragma endregion
 
 #pragma region CLIENTE
 

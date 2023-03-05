@@ -41,6 +41,7 @@ void listarClientes(Cliente* cliente, Mobilidade* mobilidade) {
 	printf("\n------------------------------------------------------------------------------------------------------\n\n");
 }
 
+
 void listarApenasClientes(Cliente* cliente) {
 
 	printf("------------------------------------------------------------------------------------------------------\n");
@@ -163,63 +164,4 @@ Cliente* associarMobilidade(Cliente* cliente, int idCliente, int idMobilidade) {
 	}
 
 	return cliente;
-}
-
-//Função Para Exportar todos os Dados de um Job
-void exportarClientes(Cliente* cliente, Mobilidade* mobilidade) {
-
-	remove("ClientesExportados.txt");
-
-	FILE* exportFile = fopen("ClientesExportados.txt", "a");
-
-	Cliente* cliAux = cliente;
-
-	fprintf(exportFile, "------------------------------------------------------------------------------------------------------\n");
-	fprintf(exportFile, "|                                         LISTA DE CLIENTES                                          |\n");
-	fprintf(exportFile, "------------------------------------------------------------------------------------------------------\n\n");
-
-
-	if (cliente != NULL) {
-		while (cliAux != NULL)
-		{
-			fprintf(exportFile, "NIF: % d     NOME : % s     E-MAIL : % s     SALDO : % .2f\n", cliAux->nif, cliAux->nome, cliAux->email, cliAux->saldo);
-
-			ClienteMobilidade* CliMobAux = cliAux->mobilidade;
-
-			if (CliMobAux != NULL)
-			{
-				while (CliMobAux != NULL)
-				{
-					Mobilidade* mobAux = mobilidade;
-
-					while (mobAux != NULL && mobAux->id != CliMobAux->idMob)
-					{
-						mobAux = mobAux->next;
-					}
-					fprintf(exportFile, "\tID: %d   Tipo Mobilidade: %s     Bateria: %.2f     Autonomia: %.2f\n", mobAux->id, mobAux->tipo, mobAux->nivel_bateria, mobAux->autonomia);
-
-					CliMobAux = CliMobAux->next;
-				}
-			}
-			else
-			{
-				fprintf(exportFile, "\tSem mobilidades associadas\n");
-			}
-			fprintf(exportFile, "------------------------------------------------------------------------------------------------------\n");
-			fprintf(exportFile, "------------------------------------------------------------------------------------------------------\n\n");
-
-			cliAux = cliAux->next;
-		}
-	}
-	else
-	{
-		fprintf(exportFile, "Sem Clientes a apresentar");
-	}
-
-	fprintf(exportFile, "\n------------------------------------------------------------------------------------------------------\n");
-	fclose(exportFile);
-
-	printf("-------------------------------------------------------\n");
-	printf("|                 EXPORTADO COM SUCESSO               |\n");
-	printf("-------------------------------------------------------\n");
 }

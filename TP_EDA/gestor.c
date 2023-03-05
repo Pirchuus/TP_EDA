@@ -15,7 +15,7 @@ void listarGestores(Gestor* gestor) {
 		printf("\tID: %d     NOME: %s     PASSWORD: %s\n", gestor->id, gestor->nome, gestor->password);
 		gestor = gestor->next;
 	}
-	printf("------------------------------------------------------------------------------------------------------\n\n");
+	printf("\n------------------------------------------------------------------------------------------------------\n\n");
 }
 
 // Função para Criar um Novo Registo de um Gestor
@@ -41,7 +41,7 @@ int existeGestor(Gestor* gestor, int id) {
 
 	while (gestor != NULL)
 	{
-		if (gestor->id = id) return(1);
+		if (gestor->id == id) return(1);
 		gestor = gestor->next;
 	}
 	return(0);
