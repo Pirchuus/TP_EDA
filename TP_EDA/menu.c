@@ -226,74 +226,86 @@ Cliente* associaMobilidade(Cliente* cliente, Mobilidade* mobilidade) {
 }
 
 
-//Operacao* desassociaMaquina(Operacao* operacao, Maquina* maquina) {
-//	int idOp = 0, idMaq = 0, found = 0;
-//
-//	do
-//	{
-//		listarOperacoes(operacao, maquina);
-//
-//		printf("ID da Operação: ");
-//		scanf("%d", &idOp);
-//
-//		Operacao* opAux = operacao;
-//		while (opAux != NULL && opAux->idOp != idOp)
-//			opAux = opAux->seguinte;
-//
-//		if (opAux == NULL) {
-//			idOp = 0;
-//			system("cls");
-//			printf("Escolha inválida\n");
-//			system("pause");
-//			system("cls");
-//		}
-//	} while (idOp == 0);
-//
-//	system("cls");
-//
-//	do
-//	{
-//		printf("ID da Operação: %d\n", idOp);
-//
-//		listarMaquinas(maquina);
-//
-//		printf("ID da Máquina Para Desassociar: ");
-//		scanf("%d", &idMaq);
-//
-//		Maquina* maqAux = maquina;
-//		while (maqAux != NULL && maqAux->idMaq != idMaq)
-//			maqAux = maqAux->seguinte;
-//
-//		if (maqAux == NULL) {
-//			idMaq = 0;
-//			system("cls");
-//			printf("Escolha inválida\n");
-//			system("pause");
-//			system("cls");
-//		}
-//	} while (idMaq == 0);
-//
-//	// Verificação de Existencia de Máquinas já não Associadas
-//	Operacao* opAux = operacao;
-//	while (opAux != NULL) {
-//		OperacaoMaquina* OpMaqAux = opAux->maquinas;
-//		while (OpMaqAux != NULL) {
-//			if (OpMaqAux->idOp == idOp && OpMaqAux->idMaq == idMaq) {
-//				found = 1;
-//			}
-//			OpMaqAux = OpMaqAux->seguinte;
-//		}
-//		opAux = opAux->seguinte;
-//	}
-//
-//	if (found == 1) {
-//		return desassociarMaquina(operacao, idOp, idMaq);
-//	}
-//	else {
-//		printf("\n\nA Máquina '%d' não está associada a operação '%d'\n", idMaq, idOp);
-//		return operacao;
-//	}
-//}
+Cliente* desassociaMobilidade(Cliente* cliente, Mobilidade* mobilidade) {
+	int idCliente = 0, idMobilidade = 0, found = 0;
+
+	do
+	{
+		listarClientes(cliente, mobilidade);
+
+		printf("NIF do Cliente: ");
+		scanf("%d", &idCliente);
+
+		Cliente* cliAux = cliente;
+
+		while (cliAux != NULL && cliAux->nif != idCliente)
+		{
+			cliAux = cliAux->next;
+		}
+
+		if (cliAux == NULL) {
+			idCliente = 0;
+			system("cls");
+			printf("Escolha invalida\n");
+			system("pause");
+			system("cls");
+		}
+	} while (idCliente == 0);
+
+	system("cls");
+
+	do
+	{
+		printf("NIF do Cliente: %d\n", idCliente);
+
+		listarMobilidades(mobilidade);
+
+		printf("ID da Mobilidade Para Desassociar: ");
+		scanf("%d", &idMobilidade);
+
+		Mobilidade* mobAux = mobilidade;
+		while (mobAux != NULL && mobAux->id != idMobilidade)
+		{
+			mobAux = mobAux->next;
+		}
+
+		if (mobAux == NULL) {
+			idMobilidade = 0;
+			system("cls");
+			printf("Escolha invalida\n");
+			system("pause");
+			system("cls");
+		}
+	} while (idMobilidade == 0);
+
+	// Verificação de Existencia de Máquinas já não Associadas
+	Cliente* cliAux = cliente;
+
+	while (cliAux != NULL) 
+	{
+		ClienteMobilidade* CliMobAux = cliAux->mobilidade;
+
+		while (CliMobAux != NULL) 
+		{
+			if (CliMobAux->nifCliente == idCliente && CliMobAux->idMob == idMobilidade) 
+			{
+				found = 1;
+			}
+			CliMobAux = CliMobAux->next;
+		}
+		cliAux = cliAux->next;
+	}
+
+	if (found == 1) 
+	{
+		return desassociarMobilidade(cliente, idCliente, idMobilidade);
+	}
+	else 
+	{
+		printf("\n\nA Mobilidade '%d' nao esta associada a operaçao '%d'\n", idMobilidade, idCliente);
+		return cliente;
+	}
+}
 
 #pragma endregion
 

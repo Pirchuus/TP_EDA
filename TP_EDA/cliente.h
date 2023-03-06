@@ -28,4 +28,5 @@ Cliente* inserirCliente(Cliente* cliente, int nif, char nome[], char email[], fl
 Cliente* removerCliente(Cliente* cliente, int nif);
 Cliente* alterarCliente(Cliente* cliente, int nif, char nome[], char email[], float saldo);
 Cliente* associarMobilidade(Cliente* cliente, int idCliente, int idMobilidade);
+Cliente* desassociarMobilidade(Cliente* cliente, int idCliente, int idMobilidade);
 

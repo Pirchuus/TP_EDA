@@ -167,3 +167,11 @@ Cliente* associarMobilidade(Cliente* cliente, int idCliente, int idMobilidade) {
 
 	return cliente;
 }
+
+
+Cliente* desassociarMobilidade(Cliente* cliente, int idCliente, int idMobilidade) {
+
+
+
+
+}

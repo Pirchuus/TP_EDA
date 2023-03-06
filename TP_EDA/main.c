@@ -119,6 +119,7 @@ int main() {
 
 	// Associação de Mobilidades aos Clientes
 	clientes = associarMobilidade(clientes, 123456789, 1);
+	clientes = associarMobilidade(clientes, 987654321, 2);
 
 	// Inserção de Gestores Predefenidos
 	Gestor* gestores = NULL;
@@ -173,7 +174,7 @@ int main() {
 					break;
 
 				case 6:
-					//clientes = desassociaMobilidade(clientes, meios);
+					clientes = desassociaMobilidade(clientes, meios);
 					system("pause");
 					break;
 
