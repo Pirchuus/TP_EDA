@@ -5,52 +5,6 @@
 #include <conio.h>
 #include "menu.h"
 
-//void listarDescAutonomia() {
-//
-//	// Obter o número de meios de mobilidade elétrica na lista
-//	int num_mobilities = 0;
-//	electric_mobility* current_mobility = mobility_list;
-//	while (current_mobility != NULL) {
-//		num_mobilities++;
-//		current_mobility = current_mobility->next;
-//	}
-//
-//	// Armazenar os dados dos meios de mobilidade elétrica em um vetor de estruturas
-//	electric_mobility* mobility_array = (electric_mobility*)malloc(num_mobilities * sizeof(electric_mobility));
-//	current_mobility = mobility_list;
-//	for (int i = 0; i < num_mobilities; i++) {
-//		mobility_array[i].id = current_mobility->id;
-//		strcpy(mobility_array[i].type, current_mobility->type);
-//		mobility_array[i].battery_level = current_mobility->battery_level;
-//		mobility_array[i].autonomy = current_mobility->autonomy;
-//		current_mobility = current_mobility->next;
-//	}
-//
-//	// Ordenar o vetor de meios de mobilidade elétrica em ordem decrescente de autonomia
-//	for (int i = 0; i < num_mobilities - 1; i++) {
-//		int max_index = i;
-//		for (int j = i + 1; j < num_mobilities; j++) {
-//			if (mobility_array[j].autonomy > mobility_array[max_index].autonomy) {
-//				max_index = j;
-//			}
-//		}
-//		electric_mobility temp = mobility_array[i];
-//		mobility_array[i] = mobility_array[max_index];
-//		mobility_array[max_index] = temp;
-//	}
-//
-//	// Imprimir os dados dos meios de mobilidade elétrica na ordem do vetor ordenado
-//	for (int i = 0; i < num_mobilities; i++) {
-//		printf("ID: %d\n", mobility_array[i].id);
-//		printf("Type: %s\n", mobility_array[i].type);
-//		printf("Battery level: %.2f\n", mobility_array[i].battery_level);
-//		printf("Autonomy: %.2f\n", mobility_array[i].autonomy);
-//		printf("-------------------------\n");
-//	}
-//
-//	free(mobility_array);
-//}
-
 //Função Para Exportar todos os Dados
 void exportarDados(Cliente* cliente, Mobilidade* mobilidade, Gestor* gestor) {
 
@@ -133,6 +87,15 @@ void exportarDados(Cliente* cliente, Mobilidade* mobilidade, Gestor* gestor) {
 
 }
 
+
+// Função para apresentar a lista das mobilidades por ordem decrescente de autonomia
+void listaMobilidadeDESC(Mobilidade* mobilidade) {
+
+	Mobilidade* arrayMob = malloc(sizeof(struct mobilidade));
+
+
+
+}
 
 int main() {
 
@@ -304,6 +267,11 @@ int main() {
 					system("pause");
 					break;
 
+				case 5:
+					listaMobilidadeDESC(meios);
+					system("pause");
+					break;
+				
 				case 0:
 					subOption = 0;
 					break;

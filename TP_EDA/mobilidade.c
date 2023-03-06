@@ -98,3 +98,6 @@ Mobilidade* alterarMobilidade(Mobilidade* mobilidade, int id, char tipo[], float
 
 	return(mobilidade);
 }
+
+
+// lista de mobilidades por ordem decrescente

@@ -3,7 +3,7 @@
 #include <string.h>
 #include "cliente.h"
 
-// Funçao para Listar todos os clientes
+// Funçao para Listar todos os clientes e mobilidades associadas
 void listarClientes(Cliente* cliente, Mobilidade* mobilidade) {
 
 	printf("------------------------------------------------------------------------------------------------------\n");
@@ -17,7 +17,7 @@ void listarClientes(Cliente* cliente, Mobilidade* mobilidade) {
 
 		if (cliMobAux == NULL)
 		{
-			printf("\tNao tem Maquinas Associadas\n");
+			printf("\tNao tem Mobiliddes Associadas\n");
 		}
 		else 
 		{
@@ -41,7 +41,7 @@ void listarClientes(Cliente* cliente, Mobilidade* mobilidade) {
 	printf("\n------------------------------------------------------------------------------------------------------\n\n");
 }
 
-
+// Função para listar apenas os clientes
 void listarApenasClientes(Cliente* cliente) {
 
 	printf("------------------------------------------------------------------------------------------------------\n");
@@ -118,7 +118,9 @@ Cliente* removerCliente(Cliente* cliente, int nif) {
 }
 
 
+// Função para alterar os dados de um Cliente encontrado atraves do seu NIF
 Cliente* alterarCliente(Cliente* cliente, int nif, char nomeNovo[], char emailNovo[], float saldo) {
+
 	Cliente* nodoAtual = cliente;
 	Cliente* nodoAnterior;
 
@@ -155,7 +157,7 @@ Cliente* associarMobilidade(Cliente* cliente, int idCliente, int idMobilidade) {
 
 	if (nodoAtual != NULL)
 	{
-		ClienteMobilidade* nova = (ClienteMobilidade*)malloc(sizeof(ClienteMobilidade));
+		ClienteMobilidade* nova = malloc(sizeof(struct clientemobilidade));
 		nova->nifCliente = idCliente;
 		nova->idMob = idMobilidade;
 		nova->next = nodoAtual->mobilidade;
