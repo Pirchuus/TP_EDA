@@ -28,7 +28,6 @@ void mostraClienteMenu() {
 	printf("| 4. Alterar Cliente                      |\n");
 	printf("| 5. Associar Mobilidade                  |\n");
 	printf("| 6. Desassociar Mobilidade               |\n");
-	printf("| 7. Exportar Dados                       |\n");
 	printf("| 0. Sair                                 |\n");
 	printf("-------------------------------------------\n\n");
 	printf("Opcao: ");
