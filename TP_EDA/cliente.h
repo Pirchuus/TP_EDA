@@ -8,8 +8,8 @@ typedef struct cliente
     char nome[50]; // nome do cliente
     char email[50]; // e-mail do cliente
     float saldo; // saldo do cliente
-    struct clientemobilidade* mobilidade; // 
-    struct cliente* next; // apontador para o proximo cliente da lista
+    struct clientemobilidade* mobilidade; // apontador para a estrutura de mobilidade do cliente, que pode ser usada para armazenar informações sobre a mobilidade do cliente
+    struct cliente* next; // apontador para o proximo cliente na lista
 
 } Cliente;
 
@@ -17,7 +17,7 @@ typedef struct clientemobilidade
 {
     int nifCliente; // nif do cliente
     int idMob; // id da mobilidade
-    struct clientemobilidade* next;
+    struct clientemobilidade* next; // apontador para o proximo clientemobilidade na lista
 
 }ClienteMobilidade;
 
