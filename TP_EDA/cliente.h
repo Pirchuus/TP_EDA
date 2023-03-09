@@ -4,12 +4,12 @@
 // Estrutura para representar um cliente
 typedef struct cliente
 {
-    int nif;
-    char nome[50];
-    char email[50];
-    float saldo;
-    struct clientemobilidade* mobilidade;
-    struct cliente* next;
+    int nif; // nif para indicar o cliente
+    char nome[50]; // nome do cliente
+    char email[50]; // e-mail do cliente
+    float saldo; // saldo do cliente
+    struct clientemobilidade* mobilidade; // 
+    struct cliente* next; // apontador para o proximo cliente da lista
 
 } Cliente;
 

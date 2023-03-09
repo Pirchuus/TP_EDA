@@ -17,7 +17,7 @@ void listarClientes(Cliente* cliente, Mobilidade* mobilidade) {
 
 		if (cliMobAux == NULL)
 		{
-			printf("\tNao tem Mobiliddes Associadas\n");
+			printf("\tNao tem Mobiliddes Associadas\n\n");
 		}
 		else 
 		{
@@ -31,7 +31,7 @@ void listarClientes(Cliente* cliente, Mobilidade* mobilidade) {
 				}
 				if (mobAux != NULL) 
 				{
-					printf("\tID: %d   Tipo Mobilidade: %s     Bateria: %.2f     Autonomia: %.2f\n", mobAux->id, mobAux->tipo, mobAux->nivel_bateria, mobAux->autonomia);
+					printf("\tID: %d   Tipo Mobilidade: %s     Bateria: %.2f     Autonomia: %.2f\n\n", mobAux->id, mobAux->tipo, mobAux->nivel_bateria, mobAux->autonomia);
 				}
 				cliMobAux = cliMobAux->next;
 			}
@@ -60,7 +60,7 @@ void listarApenasClientes(Cliente* cliente) {
 // Função para Criar um Novo Registo de um Cliente
 Cliente* inserirCliente(Cliente* cliente, int nif, char nome[], char email[], float saldo) {
 
-	if (!existeMobilidade(cliente, nif))
+	if (!existeCliente(cliente, nif))
 	{
 		Cliente* novo = malloc(sizeof(struct cliente));
 		if (novo != NULL)
@@ -82,7 +82,7 @@ int existeCliente(Cliente* cliente, int nif) {
 
 	while (cliente != NULL)
 	{
-		if (cliente->nif = nif) return(1);
+		if (cliente->nif == nif) return(1);
 		cliente = cliente->next;
 	}
 	return(0);

@@ -12,7 +12,7 @@ void listarMobilidades(Mobilidade* mobilidade) {
 
 	while (mobilidade != NULL)
 	{
-		printf("\tID: %d     TIPO: %s     BATERIA: %.2f     AUTONOMIA: %.2f\n", mobilidade->id, mobilidade->tipo, mobilidade->nivel_bateria, mobilidade->autonomia);
+		printf("\tID: %d     TIPO: %s     BATERIA: %.2f '%'     AUTONOMIA: %.2f Km\n", mobilidade->id, mobilidade->tipo, mobilidade->nivel_bateria, mobilidade->autonomia);
 		mobilidade = mobilidade->next;
 	}
 	printf("\n------------------------------------------------------------------------------------------------------\n\n");

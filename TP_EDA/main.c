@@ -91,10 +91,54 @@ void exportarDados(Cliente* cliente, Mobilidade* mobilidade, Gestor* gestor) {
 // Função para apresentar a lista das mobilidades por ordem decrescente de autonomia
 void listaMobilidadeDESC(Mobilidade* mobilidade) {
 
-	Mobilidade* arrayMob = malloc(sizeof(struct mobilidade));
+	// Obter o número de meios de mobilidade elétrica na lista
+	int num_mobilidade = 0;
+	Mobilidade* nodoAtual = mobilidade;
+	
+	while (nodoAtual != NULL) 
+	{
+		num_mobilidade++;
+		nodoAtual = nodoAtual->next;
+	}
 
+	// Armazenar os dados dos meios de mobilidade elétrica em um vetor de estruturas
+	Mobilidade* arrayMob = malloc(num_mobilidade * sizeof(Mobilidade));
+	nodoAtual = mobilidade;
+	
+	for (int i = 0; i < num_mobilidade; i++) 
+	{
+		arrayMob[i].id = nodoAtual->id;
+		strcpy(arrayMob[i].tipo, nodoAtual->tipo);
+		arrayMob[i].nivel_bateria = nodoAtual->nivel_bateria;
+		arrayMob[i].autonomia = nodoAtual->autonomia;
+		nodoAtual = nodoAtual->next;
+	}
 
+	// Ordenar o vetor de meios de mobilidade elétrica em ordem decrescente de autonomia
+	for (int i = 0; i < num_mobilidade - 1; i++) 
+	{
+		int max = i;
+		for (int j = i + 1; j < num_mobilidade; j++) 
+		{
+			if (arrayMob[j].autonomia > arrayMob[max].autonomia) 
+			{
+				max = j;
+			}
+		}
 
+		Mobilidade temp = arrayMob[i];
+		arrayMob[i] = arrayMob[max];
+		arrayMob[max] = temp;
+	}
+
+	// Imprimir os dados dos meios de mobilidade elétrica na ordem do vetor ordenado
+	for (int i = 0; i < num_mobilidade; i++) 
+	{
+		printf("ID: %d     TIPO: %s     BATERIA: %.2f     AUTONOMIA: %.2f\n", arrayMob[i].id, arrayMob[i].tipo, arrayMob[i].nivel_bateria, arrayMob[i].autonomia);
+		printf("-------------------------\n");	
+	}
+
+	free(arrayMob);
 }
 
 int main() {

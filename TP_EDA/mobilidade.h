@@ -6,7 +6,7 @@ typedef struct mobilidade
     char tipo[100]; // Tipo do meio de mobilidade
     float nivel_bateria; // Nível atual da bateria
     float autonomia; // autonomia do tipo do meio de mobilidade
-    struct mobilidade* next; // Ponteiro para o próximo meio de mobilidade na lista
+    struct mobilidade* next; // apontador para o próximo meio de mobilidade na lista
 
 } Mobilidade;
 
@@ -15,3 +15,4 @@ int existeMobilidade(Mobilidade* mobilidade, int id);
 Mobilidade* inserirMobilidade(Mobilidade* mobilidade, int id, char tipo[], float nivel_bateria, float autonomia);
 Mobilidade* removerMobilidade(Mobilidade* mobilidade, int id);
 Mobilidade* alterarMobilidade(Mobilidade* mobilidade, int id, char tipo[], float nivel_bateria, float autonomia);
+void listaMobilidadeDESC(Mobilidade* mobilidade);

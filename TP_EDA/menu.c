@@ -80,7 +80,7 @@ Cliente* criaCliente(Cliente* cliente) {
 
 	Cliente* opAux = cliente;
 
-	while (opAux != NULL && (opAux->nif = nif) != 0)
+	while (opAux != NULL && (opAux->nif != nif))
 	{
 		opAux = opAux->next;
 	}
@@ -323,7 +323,7 @@ Gestor* criaGestor(Gestor* gestor) {
 
 
 	Gestor* gesAux = gestor;
-	while (gesAux != NULL && (gesAux->id = id) != 0)
+	while (gesAux != NULL && (gesAux->id != id))
 	{
 		gesAux = gesAux->next;
 	}
@@ -395,7 +395,7 @@ Mobilidade* criaMobilidade(Mobilidade* mobilidade) {
 
 
 	Mobilidade* mobAux = mobilidade;
-	while (mobAux != NULL && (mobAux->id = id) != 0)
+	while (mobAux != NULL && (mobAux->id != id))
 		mobAux = mobAux->next;
 
 	if (mobAux != NULL) {
